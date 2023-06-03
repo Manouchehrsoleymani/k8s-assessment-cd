@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxv1
+spec:
+  selector:
+    matchLabels:
+      app: nginxv1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginxv1
+    spec:
+      containers:
+      - name: nginxv1
+        image: manouchehrsolamani/trivago:v1
+        ports:
+        - name: web
+          containerPort: 80
