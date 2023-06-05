@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginxv2
+  namespace: trivago-app
 spec:
   selector:
     matchLabels:
@@ -19,6 +20,22 @@ spec:
         - name: web
           containerPort: 80
         readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+          failureThreshold: 1
+          successThreshold: 1
           httpGet:
-            path: /
+            host: localhost
             port: 80
+            path: /
+        livenessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+          failureThreshold: 1
+          successThreshold: 1
+          httpGet:
+            host: localhost
+            port: 80
+            path: /
