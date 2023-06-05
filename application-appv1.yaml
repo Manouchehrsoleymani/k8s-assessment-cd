@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: appv1-argo
+  namespace: trivago-app
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Manouchehrsoleymani/k8s-assessment-cd.git'
+    path: appv1
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
