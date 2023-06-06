@@ -18,7 +18,7 @@ spec:
         image: manouchehrsolamani/trivago:v20
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 80
   strategy:
     canary:
       steps:
