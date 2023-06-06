@@ -17,7 +17,7 @@ spec:
       - name: nginxv1
         image: manouchehrsolamani/trivago:v10
         ports:
-        - name: http
+        - name: web
           containerPort: 80
         readinessProbe:
           initialDelaySeconds: 1
@@ -26,7 +26,6 @@ spec:
           failureThreshold: 1
           successThreshold: 1
           httpGet:
-            host: localhost
             port: 80
             path: /
         livenessProbe:
@@ -36,6 +35,5 @@ spec:
           failureThreshold: 1
           successThreshold: 1
           httpGet:
-            host: localhost
             port: 80
             path: /
