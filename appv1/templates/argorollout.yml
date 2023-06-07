@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: manouchehrsolamani/trivago:v20
+        image: manouchehrsolamani/trivago:v10
         imagePullPolicy: Always
         ports:
         - containerPort: 80
