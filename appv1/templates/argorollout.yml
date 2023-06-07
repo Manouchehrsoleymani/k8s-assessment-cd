@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: manouchehrsolamani/trivago:v20
+        image: manouchehrsolamani/trivago:v10
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -29,7 +29,10 @@ spec:
         nginx:
           stableIngress: ingress1
       steps:
-      - setWeight: 25
+      - setWeight: 30
+      - pause:
+          duration: "1m"
+      - setWeight: 60
       - pause: {}
       # An AnalysisTemplate is referenced at the second step, which starts an AnalysisRun after
       # the setWeight step. The rollout will not progress to the following step until the

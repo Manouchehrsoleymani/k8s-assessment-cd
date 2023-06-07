@@ -4,9 +4,6 @@ metadata:
   name: ingress1
   namespace: trivago-app
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-weight: "20"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
@@ -20,4 +17,8 @@ spec:
                 number: 80
           path: /
           pathType: Exact
-     
+        # - backend:
+            # service:
+              # name: web2
+              # port:
+                # number: 8080
