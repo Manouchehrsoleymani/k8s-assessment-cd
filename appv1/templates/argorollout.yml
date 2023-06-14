@@ -17,10 +17,28 @@ spec:
     spec:
       containers:
       - name: rollouts-appv1
-        image: manouchehrsolamani/trivago:v10
+        image: manouchehrsolamani/trivago:v20
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+          failureThreshold: 1
+          successThreshold: 1
+          httpGet:
+            port: 80
+            path: /
+        livenessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+          failureThreshold: 1
+          successThreshold: 1
+          httpGet:
+            port: 80
+            path: /
   strategy:
     canary:
       stableService: nginxv1-svc
