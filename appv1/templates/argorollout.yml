@@ -5,8 +5,8 @@ metadata:
   labels:
         app: nginxv1
 spec:
-  replicas: 4
-  revisionHistoryLimit: 2
+  replicas: 8
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: nginxv1
@@ -16,8 +16,8 @@ spec:
         app: nginxv1
     spec:
       containers:
-      - name: rollouts-demo
-        image: manouchehrsolamani/trivago:v20
+      - name: rollouts-appv1
+        image: manouchehrsolamani/trivago:v10
         imagePullPolicy: Always
         ports:
         - containerPort: 80
