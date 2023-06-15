@@ -6,8 +6,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts: trivago.de
   rules:
   - host: trivago.de
     http:
